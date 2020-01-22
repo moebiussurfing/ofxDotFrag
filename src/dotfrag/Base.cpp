@@ -7,24 +7,24 @@ const float ofx::dotfrag::Base::cMult = 1.0f / 255.0f;
 ofx::dotfrag::Base::Base() {
 
     vertexSrc.str(std::string());
-#ifdef __ARM_ARCH
-    vertexSrc  << "attribute vec4 position;\n";
-    vertexSrc  << "attribute vec2 texcoord;\n";
-    vertexSrc  << "uniform vec2 u_resolution;\n";
-    vertexSrc  << "uniform mat4 modelViewProjectionMatrix;\n";
-    vertexSrc  << "varying vec2 texcoord0;\n";
-    vertexSrc  << "void main(void){\n";
-    vertexSrc  << "\tgl_Position = modelViewProjectionMatrix * position;\n";
-    vertexSrc  << "\ttexcoord0 = texcoord;\n";
-    vertexSrc  << "}\n";
-#else
+//#ifdef __ARM_ARCH
+//    vertexSrc  << "attribute vec4 position;\n";
+//    vertexSrc  << "attribute vec2 texcoord;\n";
+//    vertexSrc  << "uniform vec2 u_resolution;\n";
+//    vertexSrc  << "uniform mat4 modelViewProjectionMatrix;\n";
+//    vertexSrc  << "varying vec2 texcoord0;\n";
+//    vertexSrc  << "void main(void){\n";
+//    vertexSrc  << "\tgl_Position = modelViewProjectionMatrix * position;\n";
+//    vertexSrc  << "\ttexcoord0 = texcoord;\n";
+//    vertexSrc  << "}\n";
+//#else
     vertexSrc  << "varying vec2 texcoord0;\n";
     vertexSrc  << "uniform vec2 u_resolution;\n";
     vertexSrc  << "void main(void){\n";
     vertexSrc  << "\ttexcoord0 = gl_Vertex.xy;\n";
     vertexSrc  << "\tgl_Position = ftransform();\n";
     vertexSrc  << "}\n";
-#endif
+//#endif
 
     bIndex = 0;
     bDelay = false;

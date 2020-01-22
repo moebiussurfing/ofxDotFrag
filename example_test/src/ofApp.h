@@ -4,6 +4,8 @@
 #include "ofxGui.h"
 #include "ofxDotFrag.h"
 
+#undef GL_ES
+
 class ofApp : public ofBaseApp{
     public:
         void setup();
@@ -43,5 +45,8 @@ class ofApp : public ofBaseApp{
         ofxPanel gui;
 
         // change the name to test different shaders
-        ofx::dotfrag::InvertStrobe frag;
+        //ofx::dotfrag::InvertStrobe frag;
+		//ofx::dotfrag::HSB frag;
+		//ofx::dotfrag::Monochrome frag;
+		ofx::dotfrag::RadialRemap frag;
 };

@@ -13,7 +13,7 @@ void ofApp::setup(){
 
     fbo.allocate( 640, 480 );
 
-    mode = 3;
+    mode = 2;
     nCursor = ofRandom(1.0f);
 
     frag.allocate( fbo );
@@ -29,6 +29,7 @@ void ofApp::setup(){
     gui.setName( "GUI" );
     gui.add( frag.parameters );
 
+	//frag.parameters.
 }
 
 void ofApp::openCam(){

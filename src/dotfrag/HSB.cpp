@@ -14,9 +14,9 @@ ofx::dotfrag::HSB::HSB() {
 
 const std::string ofx::dotfrag::HSB::code = OFXDOTFRAGSOURCE(
 
-    #ifdef GL_ES
-    precision mediump float;
-    #endif
+    //#ifdef GL_ES
+    //precision mediump float;
+    //#endif
 
     uniform vec2 u_resolution;
     uniform float u_time;
