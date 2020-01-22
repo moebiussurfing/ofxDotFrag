@@ -10,7 +10,7 @@ void ofApp::setup()
     img.load("scope.png");
 
     //ofSetLogLevel( OF_LOG_VERBOSE );
-    //    frag.allocate( fbo_VideoFx );
+    //frag.allocate( fbo_VideoFx );
 
     ofBackground(0);
     mode = 2;
@@ -21,7 +21,7 @@ void ofApp::setup()
 
     gui_VideoFx.setup("", "videoFX_settings.xml", ofGetWidth()-202, 10);
     gui_VideoFx.setName("VIDEO FX");
-
+	
     fbo_VideoFx.allocate(ofGetWidth(), ofGetHeight());
     frag1.allocate(fbo_VideoFx);
     frag2.allocate(fbo_VideoFx);
@@ -46,7 +46,7 @@ void ofApp::windowResized(int w, int h)
     if (bDrawGui)
     {
         fbo_VideoFx.allocate(ofGetWidth(), ofGetHeight());
-        gui_VideoFx.setPosition(ofGetWidth()-202, 10);
+		gui_VideoFx.setPosition(10, 400);
     }
     else
     {

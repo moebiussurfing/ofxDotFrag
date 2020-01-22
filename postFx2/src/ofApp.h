@@ -44,8 +44,7 @@ public:
     ofx::dotfrag::Monochrome frag1;
     ofx::dotfrag::HSB frag2;
     ofx::dotfrag::ThreeTones frag3;
-
-
+	
     // change the name to test different shaders
     //ofx::dotfrag::InvertStrobe frag;
     //ofx::dotfrag::Twist frag;
