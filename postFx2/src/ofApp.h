@@ -41,18 +41,23 @@ public:
 
     ofFbo fbo_VideoFx;
     ofxPanel gui_VideoFx;
-    ofx::dotfrag::Monochrome frag1;
-    ofx::dotfrag::HSB frag2;
-    ofx::dotfrag::ThreeTones frag3;
-	
+
     // change the name to test different shaders
-    //ofx::dotfrag::InvertStrobe frag;
-    //ofx::dotfrag::Twist frag;
-    //ofx::dotfrag::Delay frag;
-    //ofx::dotfrag::EchoTrace frag;
-    //ofx::dotfrag::Mirror frag;
-    //ofx::dotfrag::MirrorAxis frag;
-    //ofx::dotfrag::RadialRemap frag;
-    //ofx::dotfrag::Turbolence frag;
-    //ofx::dotfrag::Live frag;
+    
+	//ofx::dotfrag::Monochrome frag1;
+    //ofx::dotfrag::HSB frag2;
+    //ofx::dotfrag::ThreeTones frag3;
+
+	//ofx::dotfrag::InvertStrobe frag1;
+	//ofx::dotfrag::Mirror frag2;
+	//ofx::dotfrag::MirrorAxis frag3;
+
+	//ofx::dotfrag::RadialRemap frag1;
+	//ofx::dotfrag::Turbolence frag2;
+	//ofx::dotfrag::Twist frag3;
+
+	ofx::dotfrag::FXAA frag1;
+	ofx::dotfrag::Live frag2;
+	ofx::dotfrag::Base frag3;
+
 };
