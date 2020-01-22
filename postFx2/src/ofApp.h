@@ -37,6 +37,7 @@ public:
     bool bDisplayFps;
     bool bDrawGui;
 
+	//-
 
     ofFbo fbo_VideoFx;
     ofxPanel gui_VideoFx;
