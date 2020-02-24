@@ -22,10 +22,15 @@ void ofApp::setup()
     gui_VideoFx.setup("", "videoFX_settings.xml", ofGetWidth()-202, 10);
     gui_VideoFx.setName("VIDEO FX");
 	
+	ofEnableArbTex();
+
     fbo_VideoFx.allocate(ofGetWidth(), ofGetHeight());
     frag1.allocate(fbo_VideoFx);
     frag2.allocate(fbo_VideoFx);
     frag3.allocate(fbo_VideoFx);
+
+	ofEnableArbTex();
+
 
     gui_VideoFx.add(frag1.parameters);
     gui_VideoFx.add(frag2.parameters);

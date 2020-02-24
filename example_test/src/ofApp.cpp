@@ -11,12 +11,20 @@ void ofApp::setup(){
 
     img.load( "scope.png");
 
+
+	//ofDisableArbTex();
+	ofEnableArbTex();//do not affects
+
     fbo.allocate( 640, 480 );
 
     mode = 2;
     nCursor = ofRandom(1.0f);
 
     frag.allocate( fbo );
+
+	ofEnableArbTex();//restores normal OF mode
+
+
 
     bCamOpen = false;
 
@@ -39,6 +47,8 @@ void ofApp::openCam(){
 }
 		
 void ofApp::windowResized(int w, int h){
+	ofDisableArbTex();//required qhe realoocate
+
 	if( bDrawGui ){
 		fbo.allocate( ofGetWidth(), ofGetHeight()-220 );
 		gui.setPosition(20, ofGetHeight()-200 );
@@ -46,6 +56,7 @@ void ofApp::windowResized(int w, int h){
 		fbo.allocate( ofGetWidth(), ofGetHeight() );
 	}
 
+	ofEnableArbTex();//restores normal OF mode
 }
 
 //--------------------------------------------------------------

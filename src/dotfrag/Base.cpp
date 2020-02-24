@@ -44,7 +44,7 @@ ofx::dotfrag::Base::Base() {
 
     fullname = ".frag";
     parameters.setName( fullname );
-    parameters.add( active.set("active", true) );
+    parameters.add( active.set("ENABLE", true) );
 
     bTimeWarp = false;
 
