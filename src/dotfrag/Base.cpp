@@ -129,7 +129,7 @@ void ofx::dotfrag::Base::name( std::string value ) {
 }
 
 void ofx::dotfrag::Base::timewarp(){
-    parameters.add( speed.set("speed", 1.0f, 0.0f, 2.0f) );
+    parameters.add( speed.set("SPEED", 1.0f, 0.0f, 2.0f) );
     bTimeWarp = true;
 }
 

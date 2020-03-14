@@ -2,9 +2,9 @@
 #include "InvertStrobe.h"
 
 ofx::dotfrag::InvertStrobe::InvertStrobe() {
-    name("invert strobe");
+    name("INVERT STROBE");
     timewarp();
-    uniform( pulse.set("pulse", 1.0f, 0.0f, 1.0f), "u_pulse" );
+    uniform( pulse.set("PULSE", 1.0f, 0.0f, 1.0f), "u_pulse" );
     source( code );
 }
 
