@@ -1,33 +1,35 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup() {
 
-    //ofSetLogLevel( OF_LOG_VERBOSE );
-	
+	//ofSetLogLevel( OF_LOG_VERBOSE );
+
 	ofEnableArbTex();//restores normal OF mode
 
 	ofBackground(0);
 
-    bDrawGui = true;
-    bDisplayFps = true;
-    mode = 1;
-    
-	img.load( "scope.png");
+	bDrawGui = true;
+	bDisplayFps = true;
+	mode = 1;
+
+	img.load("scope.png");
 
 	//-
 
-    fbo.allocate( 640, 480 );
+	fbo.allocate(640, 480);
 
 	frag1.allocate(fbo);
 	frag2.allocate(fbo);
 	frag3.allocate(fbo);
-    
+
 	//-
 
 	gui.setup("", "setting.xml");
-    gui.setName( "GUI" );
+	gui.setName("GUI");
+
 	gui.add(bReset);
+
 	gui.add(frag1.parameters);
 	gui.add(frag2.parameters);
 	gui.add(frag3.parameters);
@@ -37,7 +39,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::Changed_bReset() {
-	ofLog() << "bReset: "<<(bReset?"ON":"OFF");
+	ofLog() << "bReset: " << (bReset ? "ON" : "OFF");
 
 	if (bReset)
 	{
@@ -60,156 +62,170 @@ void ofApp::Changed_bReset() {
 }
 
 //--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
+void ofApp::windowResized(int w, int h) {
 	ofDisableArbTex();//required the reallocate
 
-	if( bDrawGui ){
-		fbo.allocate( ofGetWidth(), ofGetHeight()-220 );
-		gui.setPosition(1700, 10 );
-	}else{
-		fbo.allocate( ofGetWidth(), ofGetHeight() );
+	if (bDrawGui) {
+		fbo.allocate(ofGetWidth(), ofGetHeight() - 220);
+		gui.setPosition(ofGetWidth()-210, 10);
+	}
+	else {
+		fbo.allocate(ofGetWidth(), ofGetHeight());
 	}
 
 	ofEnableArbTex();//restores normal OF mode
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp::update() {
 
-    switch (mode) {
+	switch (mode) {
 
 		//image
-        case 1:
-            fbo.begin();
-                ofClear(0,0,0,0);
-                img.draw(0,0);
-            fbo.end();
+	case 1:
+		fbo.begin();
+		ofClear(0, 0, 0, 0);
+		img.draw(0, 0);
+		fbo.end();
 
-			frag1.apply(fbo);
-			frag2.apply(fbo);
-			frag3.apply(fbo);
-        break;
+		frag1.apply(fbo);
+		frag2.apply(fbo);
+		frag3.apply(fbo);
+		break;
 
 		//lines
-        case 2:
-        {
-            fbo.begin();
-                ofClear(0,0,0,0);
-                ofSetLineWidth(3.0f);
+	case 2:
+	{
+		fbo.begin();
+		ofClear(0, 0, 0, 0);
+		ofSetLineWidth(3.0f);
 
-                static const float nOffset = 0.3f;
-                static const int points = 3;
-                nCursor += 0.0007;
-                
-                //ofFill();
-                ofNoFill();
-                ofSetColor(255, 80, 80 );
-                for( int k=0; k<3; ++k){
-                    /*
-                    switch( k ){
-                        case 0: ofSetColor( 255, 0, 0, 245 ); break;
-                        case 1: ofSetColor( 0, 255, 0, 245 ); break;
-                        case 2: ofSetColor( 0, 0, 255, 245 ); break;
-                    }
-                    */ 
-                    ofBeginShape();
-                    for(int i=0; i<points; ++i){
-                        int x = ofNoise((k*points+i)*nOffset, nCursor)*fbo.getWidth();
-                        int y = ofNoise((k*points+i)*2.0f*nOffset, nCursor)*fbo.getHeight();
-                        ofVertex( x, y );
-                    }
-                    ofEndShape(true);
-                }
-                /*
-                ofNoFill();
-                ofSetColor(255);
-                for( int k=0; k<3; ++k){
-                    ofBeginShape();
-                    for(int i=0; i<points; ++i){
-                        int x = ofNoise((k*points+i)*nOffset, nCursor)*fbo.getWidth();
-                        int y = ofNoise((k*points+i)*2.0f*nOffset, nCursor)*fbo.getHeight();
-                        ofDrawBitmapString("vertex " + ofToString(i), x, y );
-                        ofVertex( x, y );
-                    }
-                    ofEndShape(true);
-                }
-                */ 
-            fbo.end();
+		static const float nOffset = 0.3f;
+		static const int points = 3;
+		nCursor += 0.0007;
 
-			frag1.apply(fbo);
-			frag2.apply(fbo);
-			frag3.apply(fbo);
-        }
-        break;
-    }
-}
+		//ofFill();
+		ofNoFill();
+		ofSetColor(255, 80, 80);
+		for (int k = 0; k < 3; ++k) {
+			/*
+			switch( k ){
+				case 0: ofSetColor( 255, 0, 0, 245 ); break;
+				case 1: ofSetColor( 0, 255, 0, 245 ); break;
+				case 2: ofSetColor( 0, 0, 255, 245 ); break;
+			}
+			*/
+			ofBeginShape();
+			for (int i = 0; i < points; ++i) {
+				int x = ofNoise((k*points + i)*nOffset, nCursor)*fbo.getWidth();
+				int y = ofNoise((k*points + i)*2.0f*nOffset, nCursor)*fbo.getHeight();
+				ofVertex(x, y);
+			}
+			ofEndShape(true);
+		}
+		/*
+		ofNoFill();
+		ofSetColor(255);
+		for( int k=0; k<3; ++k){
+			ofBeginShape();
+			for(int i=0; i<points; ++i){
+				int x = ofNoise((k*points+i)*nOffset, nCursor)*fbo.getWidth();
+				int y = ofNoise((k*points+i)*2.0f*nOffset, nCursor)*fbo.getHeight();
+				ofDrawBitmapString("vertex " + ofToString(i), x, y );
+				ofVertex( x, y );
+			}
+			ofEndShape(true);
+		}
+		*/
+		fbo.end();
 
-//--------------------------------------------------------------
-void ofApp::draw(){
-	fbo.draw( 0, 0 );
-	//frag.draw( 0, 0 );
-
-	if(bDrawGui) gui.draw();
-
-	ofSetColor(255);
-	if(bDisplayFps) ofDrawBitmapString( "fps="+ofToString(ofGetFrameRate()), 20, ofGetHeight()-20 );
-
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-	switch( key ){
-		case '1': mode = 1; break;
-		case '2': mode = 2; break;
-		case '0': mode = 0; break;
-		case 'g': bDrawGui = !bDrawGui;	break;
-		case ' ': frag1.active = true; break;
-		case 'r': frag1.reload(); break;
-		case 'f': bDisplayFps = !bDisplayFps; break;
+		frag1.apply(fbo);
+		frag2.apply(fbo);
+		frag3.apply(fbo);
+	}
+	break;
 	}
 }
 
 //--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-	if( key == ' ' ) frag1.active = false;
-}
+void ofApp::draw() {
+	fbo.draw(0, 0);
+	//frag.draw( 0, 0 );
 
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y){
+	if (bDrawGui) gui.draw();
 
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
+	ofSetColor(255);
+	if (bDisplayFps) ofDrawBitmapString("fps=" + ofToString(ofGetFrameRate()), 20, ofGetHeight() - 20);
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
+void ofApp::keyPressed(int key) {
+	switch (key) {
+	case 'm':
+		if (mode == 1)
+			mode = 2;
+		else if (mode == 2)
+			mode = 1;
+		break;
+		//case 'c': mode = 0; break;
+	case 'g': bDrawGui = !bDrawGui;	break;
+	case 'f': bDisplayFps = !bDisplayFps; break;
+
+		//case '1': frag1.active = true; break;
+		//case '2': frag2.active = true; break;
+		//case '3': frag3.active = true; break;
+	case '1': frag1.active = !frag1.active; break;
+	case '2': frag2.active = !frag2.active; break;
+	case '3': frag3.active = !frag3.active; break;
+
+		//case 'r': frag1.reload(); break;
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::keyReleased(int key) {
+	//if (key == '1') frag1.active = false;
+	//if (key == '2') frag2.active = false;
+	//if (key == '3') frag3.active = false;
+}
+
+//--------------------------------------------------------------
+void ofApp::mouseMoved(int x, int y) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
+void ofApp::mouseDragged(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
+void ofApp::mousePressed(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
+void ofApp::mouseReleased(int x, int y, int button) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
+void ofApp::mouseEntered(int x, int y) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
+void ofApp::mouseExited(int x, int y) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::gotMessage(ofMessage msg) {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::dragEvent(ofDragInfo dragInfo) {
 
 }
