@@ -13,9 +13,9 @@ ofx::dotfrag::Delay::Delay() {
 
 const std::string ofx::dotfrag::Delay::code = OFXDOTFRAGSOURCE(
 
-    #ifdef GL_ES
-    precision mediump float;
-    #endif
+    //#ifdef GL_ES
+    //precision mediump float;
+    //#endif
 
     uniform vec2 u_resolution;
     uniform float u_time;

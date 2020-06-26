@@ -4,19 +4,19 @@
 
 ofx::dotfrag::HSB::HSB() {
     name("HSB");
-    uniform( hue.set("hue", 0.0f, 0.0f, 1.0f), "u_hue");
-    uniform( brightness.set("brightness", 0.0f, -1.0f, 1.0f), "u_brightness");
-    uniform( saturation.set("saturation", 1.0f, 0.0f, 2.0f), "u_saturation");
-    uniform( contrast.set("contrast", 1.0f, 0.0f, 2.0f), "u_contrast");
+    uniform( hue.set("HUE", 0.0f, 0.0f, 1.0f), "u_hue");
+    uniform( brightness.set("BRIGHTNESS", 0.0f, -1.0f, 1.0f), "u_brightness");
+    uniform( saturation.set("SATURATION", 1.0f, 0.0f, 2.0f), "u_saturation");
+    uniform( contrast.set("CONTRAST", 1.0f, 0.0f, 2.0f), "u_contrast");
     source( code );
 }
 
 
 const std::string ofx::dotfrag::HSB::code = OFXDOTFRAGSOURCE(
 
-    #ifdef GL_ES
-    precision mediump float;
-    #endif
+    //#ifdef GL_ES
+    //precision mediump float;
+    //#endif
 
     uniform vec2 u_resolution;
     uniform float u_time;

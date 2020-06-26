@@ -7,24 +7,24 @@ const float ofx::dotfrag::Base::cMult = 1.0f / 255.0f;
 ofx::dotfrag::Base::Base() {
 
     vertexSrc.str(std::string());
-#ifdef __ARM_ARCH
-    vertexSrc  << "attribute vec4 position;\n";
-    vertexSrc  << "attribute vec2 texcoord;\n";
-    vertexSrc  << "uniform vec2 u_resolution;\n";
-    vertexSrc  << "uniform mat4 modelViewProjectionMatrix;\n";
-    vertexSrc  << "varying vec2 texcoord0;\n";
-    vertexSrc  << "void main(void){\n";
-    vertexSrc  << "\tgl_Position = modelViewProjectionMatrix * position;\n";
-    vertexSrc  << "\ttexcoord0 = texcoord;\n";
-    vertexSrc  << "}\n";
-#else
+//#ifdef __ARM_ARCH
+//    vertexSrc  << "attribute vec4 position;\n";
+//    vertexSrc  << "attribute vec2 texcoord;\n";
+//    vertexSrc  << "uniform vec2 u_resolution;\n";
+//    vertexSrc  << "uniform mat4 modelViewProjectionMatrix;\n";
+//    vertexSrc  << "varying vec2 texcoord0;\n";
+//    vertexSrc  << "void main(void){\n";
+//    vertexSrc  << "\tgl_Position = modelViewProjectionMatrix * position;\n";
+//    vertexSrc  << "\ttexcoord0 = texcoord;\n";
+//    vertexSrc  << "}\n";
+//#else
     vertexSrc  << "varying vec2 texcoord0;\n";
     vertexSrc  << "uniform vec2 u_resolution;\n";
     vertexSrc  << "void main(void){\n";
     vertexSrc  << "\ttexcoord0 = gl_Vertex.xy;\n";
     vertexSrc  << "\tgl_Position = ftransform();\n";
     vertexSrc  << "}\n";
-#endif
+//#endif
 
     bIndex = 0;
     bDelay = false;
@@ -36,7 +36,9 @@ ofx::dotfrag::Base::Base() {
 
     uniforms.reserve(12);
 
-    ofDisableArbTex();
+	bArbTex = ofGetUsingArbTex();//TODO:
+    
+	ofDisableArbTex();
     if(constructed==0){
         ofLogVerbose()<<"[ofx::dotfrag::Base] disabling ARB textures for shaders";
     } 
@@ -44,7 +46,7 @@ ofx::dotfrag::Base::Base() {
 
     fullname = ".frag";
     parameters.setName( fullname );
-    parameters.add( active.set("active", true) );
+    parameters.add( active.set("ENABLE", true) );
 
     bTimeWarp = false;
 
@@ -129,7 +131,7 @@ void ofx::dotfrag::Base::name( std::string value ) {
 }
 
 void ofx::dotfrag::Base::timewarp(){
-    parameters.add( speed.set("speed", 1.0f, 0.0f, 2.0f) );
+    parameters.add( speed.set("SPEED", 1.0f, 0.0f, 2.0f) );
     bTimeWarp = true;
 }
 

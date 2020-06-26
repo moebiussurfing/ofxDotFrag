@@ -2,18 +2,18 @@
 #include "Monochrome.h"
 
 ofx::dotfrag::Monochrome::Monochrome() {
-    name("monochrome");
-    uniform( low.set("low", 0.0f, 0.0f, 1.0f), "u_low" );
-    uniform( high.set("high", 1.0f, 0.0f, 1.0f), "u_high" );
+    name("MONOCHROME");
+    uniform( low.set("LOW", 0.0f, 0.0f, 1.0f), "u_low" );
+    uniform( high.set("HIGH", 1.0f, 0.0f, 1.0f), "u_high" );
     source( code );
 }
 
 
 const std::string ofx::dotfrag::Monochrome::code = OFXDOTFRAGSOURCE(
 
-    #ifdef GL_ES
-    precision mediump float;
-    #endif
+    //#ifdef GL_ES
+    //precision mediump float;
+    //#endif
 
     uniform vec2 u_resolution;
     uniform float u_time;

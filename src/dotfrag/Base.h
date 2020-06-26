@@ -22,6 +22,8 @@ private:
     struct UniformPointer;
 
 public:
+	
+	bool bArbTex;//TODO:
 
     Base();
 

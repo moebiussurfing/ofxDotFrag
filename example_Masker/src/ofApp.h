@@ -12,8 +12,6 @@ class ofApp : public ofBaseApp{
         void update();
         void draw();
         
-        void openCam();
-        
         void keyPressed(int key);
         void keyReleased(int key);
         void mouseMoved(int x, int y);
@@ -26,27 +24,24 @@ class ofApp : public ofBaseApp{
         void dragEvent(ofDragInfo dragInfo);
         void gotMessage(ofMessage msg);
 
-
-        string path;
         int mode;
-        float nCursor;
-        
+        bool bDisplayFps;
+        bool bDrawGui;
+		float nCursor;
+		ofParameter<bool> bReset{ "RESET",false };
+
         ofImage img;
-        ofVideoGrabber vidGrabber;
 
         ofFbo fbo;
         
-        vector<string> arguments;
-        
-        bool bCamOpen;
-        bool bDisplayFps;
-        
-        bool bDrawGui;
         ofxPanel gui;
 
-        // change the name to test different shaders
-        //ofx::dotfrag::InvertStrobe frag;
-		//ofx::dotfrag::HSB frag;
-		//ofx::dotfrag::Monochrome frag;
-		ofx::dotfrag::RadialRemap frag;
+		ofx::dotfrag::Monochrome frag1;
+		ofx::dotfrag::HSB frag2;
+        ofx::dotfrag::InvertStrobe frag3;
+
+//private:
+		ofEventListener listener;
+
+		void Changed_bReset();
 };

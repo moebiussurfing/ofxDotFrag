@@ -21,9 +21,9 @@ ofx::dotfrag::FXAA::FXAA() {
 
 const std::string ofx::dotfrag::FXAA::code = OFXDOTFRAGSOURCE(
 
-    #ifdef GL_ES
-    precision mediump float;
-    #endif
+    //#ifdef GL_ES
+    //precision mediump float;
+    //#endif
 
     varying vec2 st;
     uniform sampler2D u_tex0;

@@ -12,6 +12,11 @@ docs/tagfile.xml
 /bin/*
 !/bin/data/
 
+*.XML
+*.xml
+*.JSON
+*.json
+
 [Bb]uild/
 [Oo]bj/
 *.o
@@ -26,15 +31,20 @@ docs/tagfile.xml
 # IDE
 #########################
 
-# Visual Studio Code
-.vscode/
-*.code-workspace
-GPATH
-GRTAGS
-GTAGS
-
+# VS2017
+*.vcxproj
+*.vcxproj.*
+icon.rc
+*.vs
+*.vs/
+*.vs/*
+*.vs/
+*.sln
+*.filters
+*.user
 
 # XCode
+*.xcodeproj
 *.pbxuser
 *.perspective
 *.perspectivev3
@@ -43,6 +53,15 @@ GTAGS
 #XCode 4
 xcuserdata
 *.xcworkspace
+*.xcodeproj/project.pbxproj
+*.xcodeproj/xcshareddata/xcschemes/
+
+# AppCode
+*.idea
+*.idea/
+*.idea/*
+*.idea/
+*/.idea/workspace.xml
 
 # Code::Blocks
 *.depend
@@ -113,3 +132,4 @@ Desktop.ini
 *.log
 *.sql
 *.sqlite
+
