@@ -3,10 +3,10 @@
 
 
 ofx::dotfrag::Delay::Delay() {
-    name("video delay");
+    name("VIDEO DELAY");
     framebuffer( 6 );
-    uniform( feedback.set("feedback", 0.0f, 0.0f, 1.0f), "u_feedback" );
-    uniform( blendmode.set("blendmode", 0, 0, 4), "u_blendmode" );
+    uniform( feedback.set("FEEDBACK", 0.0f, 0.0f, 1.0f), "u_feedback" );
+    uniform( blendmode.set("BLENDMODE", 0, 0, 4), "u_blendmode" );
     source( code );
 }
 

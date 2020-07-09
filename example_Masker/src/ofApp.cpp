@@ -15,9 +15,9 @@ void ofApp::setup() {
 
 	img.load("scope.png");
 
-	//-
-
 	fbo.allocate(640, 480);
+
+	//-
 
 	frag1.allocate(fbo);
 	frag2.allocate(fbo);
@@ -25,16 +25,16 @@ void ofApp::setup() {
 
 	//-
 
+	params_Mask.add(bReset);
+	params_Mask.add(frag1.parameters);
+	params_Mask.add(frag2.parameters);
+	params_Mask.add(frag3.parameters);
+	listener_bReset = bReset.newListener([this](bool&) {this->Changed_bReset(); });
+	
 	gui.setup("", "setting.xml");
 	gui.setName("GUI");
+	gui.add(params_Mask);
 
-	gui.add(bReset);
-
-	gui.add(frag1.parameters);
-	gui.add(frag2.parameters);
-	gui.add(frag3.parameters);
-
-	listener = bReset.newListener([this](bool&) {this->Changed_bReset(); });
 }
 
 //--------------------------------------------------------------

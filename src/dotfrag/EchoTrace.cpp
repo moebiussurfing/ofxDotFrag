@@ -3,12 +3,12 @@
 
 
 ofx::dotfrag::EchoTrace::EchoTrace() {
-    name("echotrace");
+    name("ECHOTRACE");
     pingpong(); // activate ping pong buffer
-    uniform( gain.set("gain", 0.7f, 0.0f, 2.0f), "u_gain" );
-    uniform( threshold.set("threshold", 0.55f, 0.0f, 1.0f), "u_threshold");
-    uniform( invert.set("invert", false), "u_invert" );
-    uniform( hardCutoff.set("hardcutoff", false), "u_hardcutoff" );
+    uniform( gain.set("GAIN", 0.7f, 0.0f, 2.0f), "u_gain" );
+    uniform( threshold.set("THRESHOLD", 0.55f, 0.0f, 1.0f), "u_threshold");
+    uniform( invert.set("INVERT", false), "u_invert" );
+    uniform( hardCutoff.set("HARDCUTOFF", false), "u_hardcutoff" );
     source( code );
 }
 

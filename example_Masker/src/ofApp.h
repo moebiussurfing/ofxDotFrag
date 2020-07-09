@@ -28,20 +28,17 @@ class ofApp : public ofBaseApp{
         bool bDisplayFps;
         bool bDrawGui;
 		float nCursor;
-		ofParameter<bool> bReset{ "RESET",false };
 
         ofImage img;
 
         ofFbo fbo;
         
         ofxPanel gui;
-
+		ofParameterGroup params_Mask{ "BLACK AND WHITE" };
 		ofx::dotfrag::Monochrome frag1;
 		ofx::dotfrag::HSB frag2;
         ofx::dotfrag::InvertStrobe frag3;
-
-//private:
-		ofEventListener listener;
-
+		ofParameter<bool> bReset{ "RESET",false };
 		void Changed_bReset();
+		ofEventListener listener_bReset;
 };

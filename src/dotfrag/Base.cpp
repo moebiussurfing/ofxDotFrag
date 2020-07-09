@@ -112,7 +112,7 @@ void ofx::dotfrag::Base::buffersize( int num ) {
         delay = 1;
         bDelay = true;
     }else if( num>2){
-        parameters.add( delay.set("delay", 1, 1, num-1) );
+        parameters.add( delay.set("DELAY", 1, 1, num-1) );
         bDelay = true;
     }
 }
